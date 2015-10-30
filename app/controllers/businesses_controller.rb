@@ -18,7 +18,6 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
-    byebug
     if @business.save
       redirect_to @business 
     else

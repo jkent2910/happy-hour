@@ -6,16 +6,54 @@ RSpec.describe BusinessesController, type: :controller do
     {
       name: "Legends",
       website: "www.legends.com",
-      line1: "4457 Westwood Drive",
-      city: "West Des Moines",
-      state: "Iowa",
-      zip: "50265"
+      start_time: "3:00 PM",
+      end_time: "4:00 PM",
+      address_attributes: {
+        line1: "4457 Westwood Drive",
+        city: "West Des Moines",
+        state: "Iowa",
+        zip: "50265"
+        }
+    }
+  }
+
+  let(:invalid_attributes) {
+    {
+      name: nil,
+      start_time: nil,
+      end_time: nil
     }
   }
 
   let(:valid_session) { {} }
 
-      describe "POST #create" do
+  context "businesses own profile" do
+    describe "GET #index" do
+      it "assigns all businesses as @businesses" do
+        business = Business.create! valid_attributes
+        get :index, {}, valid_session 
+        expect(assigns(:businesses)).to include(business)
+      end
+    end
+
+    describe "GET #show" do 
+      it "assigns the requested business as @business" do 
+        business = Business.create! valid_attributes
+        get :show, {:id => business.to_param}, valid_session
+        expect(assigns(:business)).to eq(business)
+      end
+    end
+
+    describe "GET #new" do
+      context "create a new business" do 
+        it "assigns a new business as @business" do 
+          get :new, {}, valid_session
+          expect(assigns(:business)).to be_a_new(Business)
+        end
+      end
+    end
+
+    describe "POST #create" do
       context "with valid params" do
         it "creates a new Business" do
           expect {
@@ -35,5 +73,5 @@ RSpec.describe BusinessesController, type: :controller do
         end
       end
     end
-
+  end
 end
