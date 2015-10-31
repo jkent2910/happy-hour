@@ -1,4 +1,10 @@
 <% @businesses.each do |business| %>
-  <%= @business.name %>
-  <%= @business.address %>
+  <%= business.name %> <br />
+  <%= business.address.line1 %>
+  <%= business.address.city %>
+  <%= business.address.state %>
+  <%= business.address.zip %>
+  <%= business.website %>
+  <%= business.start_time %>
+  <%= business.end_time %>
 <% end %>
