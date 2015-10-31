@@ -53,6 +53,14 @@ RSpec.describe BusinessesController, type: :controller do
       end
     end
 
+    describe "GET #edit" do 
+      it "assigns the requested business as @business" do 
+        business = Business.create! valid_attributes
+        get :show, {:id => business.to_param}, valid_session
+        expect(assigns(:business)).to eq(business)
+      end
+    end
+
     describe "POST #create" do
       context "with valid params" do
         it "creates a new Business" do
@@ -71,6 +79,69 @@ RSpec.describe BusinessesController, type: :controller do
           post :create, {:business => valid_attributes}, valid_session
           expect(response).to redirect_to(Business.last)
         end
+      end
+
+      context "with invalid params" do
+        it "assigns a newly created but unsaved business as @business" do  
+          post :create, {:business => invalid_attributes}, valid_session
+          expect(assigns(:business)).to be_a_new(Business)
+        end
+
+        it "re-renders the 'new' template" do 
+          post :create, {:business => invalid_attributes}, valid_session
+          expect(response).to render_template("new")
+        end
+      end
+    end
+  end
+
+  describe "PUT #update" do
+    context "with valid params" do
+      let(:new_attributes) {
+        {
+          name: "Legends",
+          website: "www.legendsamericangrill.com",
+          start_time: "3:00 PM",
+          end_time: "4:00 PM",
+          address_attributes: {
+            line1: "4457 Westwood Drive",
+            city: "West Des Moines",
+            state: "Iowa",
+            zip: "50265"
+            }
+        }
+      }
+
+      it "updates the requested business" do
+        business = Business.create! valid_attributes
+        put :update, {:id => business.to_param, :business => new_attributes}, valid_session
+        business.reload
+        expect(business.website).to eq("www.legendsamericangrill.com")
+      end
+
+      it "assigns the requested business as @business" do 
+        business = Business.create! valid_attributes
+        put :update, {:id => business.to_param, :business => valid_attributes}, valid_session
+        expect(assigns(:business)).to eq(business)
+      end
+
+      it "redirects to the business" do 
+        business = Business.create! valid_attributes
+        put :update, {:id => business.to_param, :business => valid_attributes}, valid_session
+        expect(response).to redirect_to(business)
+      end 
+    end
+    context "with invalid params" do
+      it "assigns the business as @business" do
+        business = Business.create! valid_attributes
+        put :update, {:id => business.to_param, :business => invalid_attributes}, valid_session
+        expect(assigns(:business)).to eq(business)
+      end
+
+      it "re-renders the 'edit' template" do
+        business = Business.create! valid_attributes
+        put :update, {:id => business.to_param, :business => invalid_attributes}, valid_session
+        expect(response).to render_template("edit")
       end
     end
   end

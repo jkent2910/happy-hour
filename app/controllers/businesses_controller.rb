@@ -14,6 +14,7 @@ class BusinessesController < ApplicationController
   end
 
   def edit
+    @business = Business.find(params[:id])
   end
 
   def create
@@ -26,6 +27,8 @@ class BusinessesController < ApplicationController
   end
 
   def update
+    @business = Business.find(params[:id])
+
     respond_to do |format|
       if @business.update(business_params)
         format.html { redirect_to @business, notice: 'Business was successfully updated.' }
@@ -38,6 +41,8 @@ class BusinessesController < ApplicationController
   end
 
   def destroy
+    @business = Business.find(params[:id])
+    
     @business.destroy
     respond_to do |format|
       format.html { redirect_to businesses_url, notice: 'Business was removed.' }
