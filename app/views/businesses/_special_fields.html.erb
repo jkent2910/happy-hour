@@ -4,7 +4,7 @@
 </p>
 <p>
   <%= f.label :category, 'Category' %><br />
-  <%= f.text_field :category %>
+  <%= f.select :category, options_for_select(Special::VALID_CATEGORIES) %>
 </p>
 <p>
   <%= f.label :price, 'Price' %><br />
@@ -12,5 +12,5 @@
 </p>
 <p>
   <%= f.label :day_of_the_week, 'Day of the week' %><br />
-  <%= f.text_field :day_of_the_week %>
+  <%= f.select :day_of_the_week, options_for_select(Special::VALID_DAYS_OF_THE_WEEK) %>
 </p>
