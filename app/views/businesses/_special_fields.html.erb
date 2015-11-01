@@ -1,16 +1,20 @@
-<p>
-  <%= f.label :name, 'Name' %><br />
-  <%= f.text_field :name %>
-</p>
-<p>
-  <%= f.label :category, 'Category' %><br />
-  <%= f.select :category, options_for_select(Special::VALID_CATEGORIES) %>
-</p>
-<p>
-  <%= f.label :price, 'Price' %><br />
-  <%= f.text_field :price %>
-</p>
-<p>
-  <%= f.label :day_of_the_week, 'Day of the week' %><br />
-  <%= f.select :day_of_the_week, options_for_select(Special::VALID_DAYS_OF_THE_WEEK) %>
-</p>
+<div class="nested-fields">
+  <p>
+    <%= f.label :name, 'Name' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :category, 'Category' %><br />
+    <%= f.select :category, options_for_select(Special::VALID_CATEGORIES) %>
+  </p>
+  <p>
+    <%= f.label :price, 'Price' %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :day_of_the_week, 'Day of the week' %><br />
+    <%= f.select :day_of_the_week, options_for_select(Special::VALID_DAYS_OF_THE_WEEK) %>
+  </p>
+
+  <%= link_to_remove_association "Remove Special", f, class: 'button' %>
+</div>
