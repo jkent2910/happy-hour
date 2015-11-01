@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'byebug'
   gem 'cucumber-rails', '~> 1.4.2', :require => false
+  gem 'database_cleaner', '~> 1.4.1'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'rspec-rails', '~> 3.2.1'
   gem 'spring'
@@ -24,6 +25,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara-webkit', '~> 1.7.1'
   gem 'shoulda-matchers', '~>3.0'
 end
 

@@ -48,6 +48,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.7.1)
+      capybara (>= 2.3.0, < 2.6.0)
+      json
     cocoon (1.2.6)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -68,6 +71,7 @@ GEM
       mime-types (>= 1.16, < 3)
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
+    database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -205,9 +209,11 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  capybara-webkit (~> 1.7.1)
   cocoon
   coffee-rails (~> 4.1.0)
   cucumber-rails (~> 1.4.2)
+  database_cleaner (~> 1.4.1)
   devise (~> 3.4.1)
   factory_girl_rails (~> 4.5.0)
   foundation-rails
