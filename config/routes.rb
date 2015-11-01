@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :businesses do
     resources :addresses
+    resources :specials
   end
   
 

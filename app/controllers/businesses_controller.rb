@@ -6,11 +6,14 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+
+    @specials = Special.where(business_id: @business.id).order("created_at DESC")
   end
 
   def new
     @business = Business.new
     @business.build_address
+    @business.specials.build 
   end
 
   def edit
@@ -53,7 +56,7 @@ class BusinessesController < ApplicationController
   private 
 
     def business_params
-      params.require(:business).permit(:name, :start_time, :end_time, :website, address_attributes: [:id, :line1, :line2, :city, :state, :zip])
+      params.require(:business).permit(:name, :start_time, :end_time, :website, specials_attributes: [:name, :price, :category, :day_of_the_week], address_attributes: [:id, :line1, :line2, :city, :state, :zip])
     end
 
 end

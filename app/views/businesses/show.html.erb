@@ -5,4 +5,11 @@
 <%= @business.address.zip %>
 <%= @business.website %>
 <%= @business.start_time %>
-<%= @business.end_time %>
+<%= @business.end_time %><br />
+<h1>Specials </h1>
+<% @specials.each do |special| %>
+  <%= special.name %>
+  <%= special.price %>
+  <%= special.category %>
+  <%= special.day_of_the_week %>
+  <% end %>

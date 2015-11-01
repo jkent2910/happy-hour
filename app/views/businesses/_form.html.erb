@@ -28,6 +28,11 @@
     <%= f.fields_for :address do |address| %>
       <%= render :partial => 'shared/address', :locals => {:ff => address} %>
     <% end %>
+
+    <h4>Add a Special</h4>
+    <%= f.fields_for :specials do |special_fields| %>
+      <%= render 'special_fields', :f => special_fields %>
+    <% end %>
      
     <p>
       <%= f.submit  %>
