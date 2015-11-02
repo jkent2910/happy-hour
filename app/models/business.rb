@@ -6,5 +6,4 @@ class Business < ActiveRecord::Base
   accepts_nested_attributes_for :specials, reject_if: :all_blank, allow_destroy: true 
 
   validates :name, :start_time, :end_time, presence: true
-  validates :name, uniqueness: true 
 end
