@@ -1,12 +1,13 @@
 class BusinessesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:edit, :update, :new, :create]
+
   def index
     @businesses = Business.all
   end
 
   def show
     @business = Business.find(params[:id])
-
     @specials = Special.where(business_id: @business.id).order("created_at DESC")
   end
 
@@ -23,7 +24,7 @@ class BusinessesController < ApplicationController
   def create
     @business = Business.new(business_params)
     if @business.save
-      redirect_to @business 
+      redirect_to @business, notice: 'Business was successfully created!'
     else
       render 'new'
     end

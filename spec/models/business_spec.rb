@@ -8,12 +8,4 @@ RSpec.describe Business, type: :model do
       end
     end
   end
-
-  context "uniqueness validations" do
-    foo = Business.new(:name=>"Foo")
-    it "validates uniqueness" do 
-      foo.should_not be_valid
-      foo.errors[:name].should include("has already been taken")
-    end
-  end
 end

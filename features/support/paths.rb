@@ -15,7 +15,17 @@ module NavigationHelpers
       '/home'
 
     when /sign in page/
-      new_user_session_path
+      user_session_path
+
+    when /the Happy Hour index page/
+      businesses_path
+
+    when /the new business page/
+      new_business_path
+
+    when /the business show page/
+      business = Business.last.id
+      business_path(business)
 
     else
       begin

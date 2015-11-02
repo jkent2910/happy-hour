@@ -1,5 +1,5 @@
 <% @businesses.each do |business| %>
-  <%= business.name %> <br />
+  <%= link_to business.name, business %> <br />
   <%= business.address.line1 %>
   <%= business.address.city %>
   <%= business.address.state %>

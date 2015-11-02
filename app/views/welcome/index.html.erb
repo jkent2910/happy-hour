@@ -1,4 +1,11 @@
 <div class="container">
-  <a href="#" class="button">Find a Happy Hour</a>
+  <%= link_to "Find a Happy Hour", businesses_path, :class => "button" %>
   <%= link_to "Add a Happy Hour", new_business_path, :class => "button" %>
 </div>
+
+ 
+<% if user_signed_in? %>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<% else %>
+<%= link_to "Join our community of Happy Hour enthusiasts", new_user_registration_path %>
+<% end %>

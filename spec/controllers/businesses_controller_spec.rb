@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe BusinessesController, type: :controller do
+  include Devise::TestHelpers 
+
+  before do 
+    user = FactoryGirl.create(:user)
+    sign_in user
+  end
 
   let(:valid_attributes) {
     {
