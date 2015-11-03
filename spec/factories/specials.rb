@@ -4,7 +4,6 @@ FactoryGirl.define do
     category "Food"
     price 5.00
     day_of_the_week "Monday"
-    business_id 1
   end
 
 end

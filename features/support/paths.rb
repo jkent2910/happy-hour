@@ -27,6 +27,10 @@ module NavigationHelpers
       business = Business.last.id
       business_path(business)
 
+    when /a business page/
+      business = FactoryGirl.create(:business)
+      business_path(business)
+
     else
       begin
         page_name =~ /the (.*) page/

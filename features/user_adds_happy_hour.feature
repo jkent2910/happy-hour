@@ -25,3 +25,16 @@ Feature: User adds a happy hour
     When I press "Create"
     Then I should be on the business show page
     And I should see "Business was successfully created"
+
+  Scenario: User edits happy hour start and end times
+    Given I am a User
+    And I am signed in 
+    And I am on the Happy Hour index page
+    And I visit a business page
+    And I follow "Edit Business" 
+    And I select "05 PM" from "business_start_time_4i"
+    And I select "06 PM" from "business_end_time_4i"
+    When I press "Update"
+    Then I should be on the business show page
+    And I should see "Business was successfully updated"
+

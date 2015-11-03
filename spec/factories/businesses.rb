@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :business do
     name "Legends"
-    start_time "2015-10-29 14:16:53"
-    end_time "2015-10-29 14:16:53"
+    start_time "3:00 PM"
+    end_time "4:00 PM"
     website "www.legends.com"
+    association :address, factory: :address 
   end
-
 end
