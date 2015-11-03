@@ -5,5 +5,11 @@ FactoryGirl.define do
     end_time "4:00 PM"
     website "www.legends.com"
     association :address, factory: :address 
+
+    factory :business_with_special do
+      after(:create) do |business|
+        create(:special, business: business)
+      end
+    end
   end
 end

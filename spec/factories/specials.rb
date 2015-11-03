@@ -5,5 +5,4 @@ FactoryGirl.define do
     price 5.00
     day_of_the_week "Monday"
   end
-
 end
