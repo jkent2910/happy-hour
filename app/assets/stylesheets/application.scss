@@ -17,14 +17,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.btn-xlarge {
-  font-size: 28px;
-}
 
-.centered {
-  text-align: center;
-}
-
+/* Navigation */ 
 .nav-container {
   border-bottom: 1px;
   border-style: none none solid;
@@ -35,6 +29,15 @@
   padding-top: 10px;
   float: right;
   margin-bottom: 15px;
+}
+
+/* Index page */ 
+.btn-xlarge {
+  font-size: 28px;
+}
+
+.centered {
+  text-align: center;
 }
 
 .glyphicon-plus {
@@ -66,6 +69,11 @@
   margin-top: 100px;
 }
 
+/* Business Index Page */
+.business-container {
+  margin-top: 15px;
+}
+
 /* User sign in and sign forms. */
 .border-form-div {
   max-width: 300px;
@@ -93,6 +101,7 @@
   padding: 7px 9px;
 }
 
+/* Glyphicons on index page */
 @media (max-width: 1200px) {
   .glyphicon {
   display: block;

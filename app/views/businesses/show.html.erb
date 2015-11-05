@@ -1,18 +1,20 @@
-<h1> <%= @business.name %> </h1> 
-<h4> <%= @business.address.line1 %>
-<%= @business.address.city %>
-<%= @business.address.state %>
-<%= @business.address.zip %> </h4>
-<%= @business.website %><br />
-<h4>Happy Hour Times: <br />
-<%= @business.start_time.strftime("%I") + ":" + @business.start_time.strftime("%M") + @business.start_time.strftime("%p") + "--"%>
-<%= @business.end_time.strftime("%I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p")%><br /></h4>
-<h1>Specials </h1>
-<% @specials.each do |special| %>
-  <%= special.name %> 
-  <%= special.price %>
-  <%= special.category %>
-  <%= special.day_of_the_week %>
-  <% end %>
+<div class="container">
+  <h1> <%= @business.name %> </h1> 
+  <h4> <%= @business.address.line1 %>
+  <%= @business.address.city %>
+  <%= @business.address.state %>
+  <%= @business.address.zip %> </h4>
+  <%= link_to "Website", @business.website %><br />
+  <h4>Happy Hour Times: <br />
+  <%= @business.start_time.strftime("%I") + ":" + @business.start_time.strftime("%M") + @business.start_time.strftime("%p") + "--"%>
+  <%= @business.end_time.strftime("%I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p")%><br /></h4>
+  <h4>Happy Hour Specials </h4>
+  <% @specials.each do |special| %> <br />
+    Item: <%= special.name %>  <br />
+    Price: <%= special.price %> <br />
+    Category: <%= special.category %> <br />
+    Day Offered: <%= special.day_of_the_week %>
+    <% end %> <br />
 
-  <%= link_to "Edit Business", edit_business_path(@business), class: "button" %>
+    <%= link_to "Edit Business", edit_business_path(@business), class: "button" %>
+</div>

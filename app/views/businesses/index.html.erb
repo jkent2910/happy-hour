@@ -1,10 +1,18 @@
-<% @businesses.each do |business| %>
-  <%= link_to business.name, business %> <br />
-  <%= business.address.line1 %>
-  <%= business.address.city %>
-  <%= business.address.state %>
-  <%= business.address.zip %>
-  <%= business.website %>
-  <%= business.start_time %>
-  <%= business.end_time %>
-<% end %>
+<div class="container business-container">
+  <div class="row">
+    <% @businesses.each do |business| %>
+      <div class="col-md-4">
+        <%= link_to business.name, business %> <br />
+        <h5> Address: </h5> 
+        <%= business.address.line1 %>
+        <%= business.address.city %>
+        <%= business.address.state %>
+        <%= business.address.zip %><br />
+        <%= link_to "Website", business.website %>
+        <h5>Happy Hour:
+        <%= business.start_time.strftime("%I") + ":" + business.start_time.strftime("%M") + business.start_time.strftime("%p") + "--"%>
+        <%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p")%></h5>
+      </div>
+    <% end %>
+  </div>
+</div>
