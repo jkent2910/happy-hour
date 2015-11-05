@@ -1,11 +1,18 @@
-<div class="container">
-  <%= link_to "Find a Happy Hour", businesses_path, :class => "button" %>
-  <%= link_to "Add a Happy Hour", new_business_path, :class => "button" %>
+<div class="container full-page">
+  <div class="container button-container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6 col-lg-offset-3 centered">
+        <span class="glyphicon glyphicon-search"></span>
+        <%= link_to "Find a Happy Hour", businesses_path, :class => "btn btn-default btn-xlarge" %>
+      </div>
+    </div>
+    <div class="row add-happy-hour-div">
+      <div class="col-xs-12 col-lg-6 col-lg-offset-3 centered">
+        <span class="glyphicon glyphicon-plus"></span>
+        <%= link_to "Add a Happy Hour", new_business_path, :class => "btn btn-default btn-xlarge" %>
+      </div>
+    </div>
+  </div>
 </div>
 
  
-<% if user_signed_in? %>
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% else %>
-<%= link_to "Join our community of Happy Hour enthusiasts", new_user_registration_path %>
-<% end %>
