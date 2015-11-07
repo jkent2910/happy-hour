@@ -7,6 +7,7 @@ gem 'foundation-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'jquery-rails'
+gem "paperclip", "~> 4.3"
 gem 'pg'
 gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
