@@ -10,8 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require foundation_and_overrides
-
+ *= require_tree .
+ *= require_self
  */
 
 @import "bootstrap-sprockets";
@@ -29,6 +29,14 @@
   padding-top: 10px;
   float: right;
   margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+/* Business Forms */
+
+.links {
+  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 /* Index page */ 
@@ -72,6 +80,19 @@
 /* Business Index Page */
 .business-container {
   margin-top: 15px;
+}
+
+/* Business Show Page */
+.heading-center {
+  text-align: center;
+}
+
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
 }
 
 /* User sign in and sign forms. */
