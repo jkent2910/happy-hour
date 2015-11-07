@@ -57,7 +57,7 @@ class BusinessesController < ApplicationController
   private 
 
     def business_params
-      params.require(:business).permit(:name, :start_time, :end_time, :website, specials_attributes: [:id, :name, :price, :category, :day_of_the_week, :_destroy], address_attributes: [:id, :line1, :line2, :city, :state, :zip])
+      params.require(:business).permit(:name, :start_time, :end_time, :website, :image, specials_attributes: [:id, :name, :price, :category, :day_of_the_week, :_destroy], address_attributes: [:id, :line1, :line2, :city, :state, :zip])
     end
 
 end

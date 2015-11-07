@@ -1,5 +1,6 @@
 <div class="container">
   <h1> <%= @business.name %> </h1> 
+  <%= image_tag @business.image.url(:medium) %>
   <h4> <%= @business.address.line1 %>
   <%= @business.address.city %>
   <%= @business.address.state %>
@@ -15,6 +16,9 @@
     Category: <%= special.category %> <br />
     Day Offered: <%= special.day_of_the_week %>
     <% end %> <br />
+</div>
 
-    <%= link_to "Edit Business", edit_business_path(@business), class: "button" %>
+<div class="container">
+    <h4>Business last updated on: <%=@business.updated_at.strftime('%x') %></h4>
+    <%= link_to "Edit Business", edit_business_path(@business), class: "btn btn-default" %>
 </div>
