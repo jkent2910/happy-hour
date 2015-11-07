@@ -4,6 +4,27 @@ class BusinessesController < ApplicationController
 
   def index
     @businesses = Business.all
+
+    @business = params[:category]
+    if @category.blank? || @category == '*'
+      @businesses = Business.all 
+    else
+      @businesses = Business.last
+    end
+
+    if sort_order == "open"
+      @businesses.each do |business| 
+        if business.check_time
+          objArray = []
+          objArray.push(business)
+          @businesses = objArray
+        else
+        end
+      end
+    elsif sort_order == "alpha"
+      @businesses = Business.order(:name)
+    end
+
   end
 
   def show
@@ -58,6 +79,10 @@ class BusinessesController < ApplicationController
 
     def business_params
       params.require(:business).permit(:name, :start_time, :end_time, :website, :image, specials_attributes: [:id, :name, :price, :category, :day_of_the_week, :_destroy], address_attributes: [:id, :line1, :line2, :city, :state, :zip])
+    end
+
+    def sort_order
+      %w[alpha open].include?(params[:order]) ? params[:order] : "alpha"
     end
 
 end

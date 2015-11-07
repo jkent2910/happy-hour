@@ -1,18 +1,42 @@
+<div class="container">
+  <h4>Find Specials By Category</h4>
+    <%= form_tag '', method: :get, id: :filter_by_special_category_form do %>
+      <%= select_tag :category, options_for_select([['All Categories', '*']] + Special::VALID_CATEGORIES, selected: @category ) %>
+      <% end %>
+  <h4><%= link_to_unless params[:order] == "open", "View Open Happy Hours", order: "open" %> |
+      <%= link_to_unless params[:order].blank? || params[:order] == "alpha", "View Alphabetically", order: "alpha" %></h4>
+
 <div class="container business-container">
   <div class="row">
     <% @businesses.each do |business| %>
       <div class="col-md-4">
         <%= link_to business.name, business %> <br />
+        <% if business.image? %> 
+          <%= image_tag business.image.url(:thumb) %>
+          <% end %>
         <h5> Address: </h5> 
         <%= business.address.line1 %>
         <%= business.address.city %>
         <%= business.address.state %>
         <%= business.address.zip %><br />
         <%= link_to "Website", business.website %>
-        <h5>Happy Hour:
-        <%= business.start_time.strftime("%I") + ":" + business.start_time.strftime("%M") + business.start_time.strftime("%p") + "--"%>
-        <%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p")%></h5>
+          <% if business.check_time %>
+            <h4 class="green-text"> Happy Hour is ON until <%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p") %></h4>
+          <% else %>
+            <h4 class="red-text"> You'll have to wait until <%= business.start_time.strftime("%I") + ":" + business.start_time.strftime("%M") + business.start_time.strftime("%p") + "--"%><%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p")%>
+          <% end %>
+            </h4>
+            <%= business.specials.map {|special| special.category }.uniq.join(',') %>
       </div>
     <% end %>
   </div>
 </div>
+
+<script>
+ $(function() {
+     $("select[name='category']").change(function() {
+        $document.write("Hello")
+         $("form#filter_by_special_category_form").submit();
+     })
+ });
+</script>

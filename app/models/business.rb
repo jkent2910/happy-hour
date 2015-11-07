@@ -10,4 +10,16 @@ class Business < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  def check_time
+    start_time_hour = start_time.hour
+    end_time_hour = end_time.hour 
+    t = Time.now.hour 
+
+    if t >= start_time_hour && t <= end_time_hour 
+      return true 
+    else
+      return false
+    end
+  end
+
 end
