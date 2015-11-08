@@ -28,7 +28,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find(params[:id])
+    @business = Business.friendly.find(params[:id])
     @specials = Special.where(business_id: @business.id).order("created_at DESC")
   end
 
@@ -39,7 +39,7 @@ class BusinessesController < ApplicationController
   end
 
   def edit
-    @business = Business.find(params[:id])
+    @business = Business.friendly.find(params[:id])
   end
 
   def create
@@ -52,7 +52,7 @@ class BusinessesController < ApplicationController
   end
 
   def update
-    @business = Business.find(params[:id])
+    @business = Business.friendly.find(params[:id])
 
     respond_to do |format|
       if @business.update(business_params)
@@ -66,7 +66,7 @@ class BusinessesController < ApplicationController
   end
 
   def destroy
-    @business = Business.find(params[:id])
+    @business = Business.friendly.find(params[:id])
     
     @business.destroy
     respond_to do |format|

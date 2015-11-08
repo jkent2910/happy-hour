@@ -2,7 +2,7 @@
   <h4>Find Specials By Category</h4>
     <%= form_tag '', method: :get, id: :filter_by_special_category_form do %>
       <%= select_tag :category, options_for_select([['All Categories', '*']] + Special::VALID_CATEGORIES, selected: @category ) %>
-      <% end %>
+    <% end %>
   <h4><%= link_to_unless params[:order] == "open", "View Open Happy Hours", order: "open" %> |
       <%= link_to_unless params[:order].blank? || params[:order] == "alpha", "View Alphabetically", order: "alpha" %></h4>
 
@@ -13,7 +13,7 @@
         <%= link_to business.name, business %> <br />
         <% if business.image? %> 
           <%= image_tag business.image.url(:thumb) %>
-          <% end %>
+        <% end %>
         <h5> Address: </h5> 
         <%= business.address.line1 %>
         <%= business.address.city %>
