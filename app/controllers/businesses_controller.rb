@@ -3,26 +3,18 @@ class BusinessesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :new, :create]
 
   def index
-    @businesses = Business.all
 
-    @business = params[:category]
+    @category = category_params[:category]
     if @category.blank? || @category == '*'
       @businesses = Business.all 
     else
-      @businesses = Business.last
+      @businesses = Business.joins(:specials).where(specials: {category: @category}).distinct
     end
 
     if sort_order == "open"
-      @businesses.each do |business| 
-        if business.check_time
-          objArray = []
-          objArray.push(business)
-          @businesses = objArray
-        else
-        end
-      end
-    elsif sort_order == "alpha"
-      @businesses = Business.order(:name)
+      @businesses = @businesses.select { |business| business.check_time }
+    else sort_order == "alpha"
+      @businesses = @businesses.order(:name)
     end
 
   end
@@ -84,5 +76,10 @@ class BusinessesController < ApplicationController
     def sort_order
       %w[alpha open].include?(params[:order]) ? params[:order] : "alpha"
     end
+
+    def category_params
+      params.permit(:category)
+    end
+
 
 end

@@ -12,6 +12,8 @@ class Business < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  scope :specials, -> (specials) { where specials: {category: category}}
+
   def check_time
     start_time_hour = start_time.hour
     end_time_hour = end_time.hour 

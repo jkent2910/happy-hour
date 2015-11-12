@@ -5,6 +5,11 @@
     <% end %>
   <h4><%= link_to_unless params[:order] == "open", "View Open Happy Hours", order: "open" %> |
       <%= link_to_unless params[:order].blank? || params[:order] == "alpha", "View Alphabetically", order: "alpha" %></h4>
+</div>
+
+<div class="container">
+  <%= link_to "Add Happy Hour", new_business_path, :class => "btn btn-default" %>
+</div>
 
 <div class="container business-container">
   <div class="row">
@@ -26,7 +31,7 @@
             <h4 class="red-text"> You'll have to wait until <%= business.start_time.strftime("%I") + ":" + business.start_time.strftime("%M") + business.start_time.strftime("%p") + "--"%><%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p")%>
           <% end %>
             </h4>
-            <%= business.specials.map {|special| special.category }.uniq.join(',') %>
+            <h5 class="bold-text">Specials available: </h5> <%= business.specials.map {|special| special.category }.uniq.join(',') %>
       </div>
     <% end %>
   </div>
@@ -35,7 +40,6 @@
 <script>
  $(function() {
      $("select[name='category']").change(function() {
-        $document.write("Hello")
          $("form#filter_by_special_category_form").submit();
      })
  });

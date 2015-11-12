@@ -23,6 +23,7 @@
   border-bottom: 1px;
   border-style: none none solid;
   background-color: #2B75ED;
+  margin-bottom: 20px;
 }
 
 .nav {
@@ -40,6 +41,11 @@
 }
 
 /* Index page */ 
+
+.bold-text {
+  display: inline-block;
+}
+
 .btn-xlarge {
   font-size: 28px;
 }
