@@ -12,10 +12,10 @@ end
 
 When /^I sign in using "([^"]*)"$/ do |password|
   step "I am on sign in page"
-  step "I should see \"Log in\""
-  step "I fill in \"Email\" with \"#{@user.email}\""
-  step "I fill in \"Password\" with \"#{password}\""
-  step "I press \"Log in\""
+  step "I should see \"Sign up\""
+  step "I fill in \"user[email]\" with \"#{@user.email}\""
+  step "I fill in \"user[password]\" with \"#{password}\""
+  step "I press \"Sign in\""
   @user.save!
 end
 
@@ -25,10 +25,10 @@ end
 
 When /^I sign in with the wrong email$/ do
   step "I am on sign in page"
-  step "I should see \"Log in\""
-  step "I fill in \"Email\" with \"bogus\""
-  step "I fill in \"Password\" with \"password\""
-  step "I press \"Log in\""
+  step "I should see \"Sign up\""
+  step "I fill in \"user[email]\" with \"bogus\""
+  step "I fill in \"user[password]\" with \"password\""
+  step "I press \"Sign in\""
 end
 
 When /^I sign in with the wrong password$/ do

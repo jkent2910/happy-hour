@@ -24,7 +24,7 @@ module NavigationHelpers
       new_business_path
 
     when /the business show page/
-      business = Business.last.id
+      business = Business.last.slug
       business_path(business)
 
     when /a business page/
