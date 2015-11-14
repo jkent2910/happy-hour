@@ -1,46 +1,51 @@
 <div class="container">
+  <h4>Find Happy Hours by Location</h4>
+    <%= form_tag '', method: :get, id: :filter_by_city_form do %>
+      <%= select_tag :city, options_for_select([['All Cities', '']] + Address::VALID_CITIES, selected: @city ) %>
+    <% end %>
   <h4>Find Specials By Category</h4>
     <%= form_tag '', method: :get, id: :filter_by_special_category_form do %>
-      <%= select_tag :category, options_for_select([['All Categories', '*']] + Special::VALID_CATEGORIES, selected: @category ) %>
+      <%= select_tag :category, options_for_select([['All Categories', '']] + Special::VALID_CATEGORIES, selected: @category ) %>
     <% end %>
   <h4><%= link_to_unless params[:order] == "open", "View Open Happy Hours", order: "open" %> |
       <%= link_to_unless params[:order].blank? || params[:order] == "alpha", "View Alphabetically", order: "alpha" %></h4>
 </div>
 
 <div class="container">
-  <%= link_to "Add Happy Hour", new_business_path, :class => "btn btn-default" %>
+  <%= link_to "Add Happy Hour", new_business_path, :class => "btn btn-primary" %>
 </div>
 
 <div class="container business-container">
-  <div class="row">
+  <div class="row"> 
     <% @businesses.each do |business| %>
-      <div class="col-md-4">
-        <%= link_to business.name, business %> <br />
+      <div class="col-md-4 business">
+        <h3><%= link_to business.name, business %></h3>
         <% if business.image? %> 
           <%= image_tag business.image.url(:thumb) %>
         <% end %>
         <h5> Address: </h5> 
-        <%= business.address.line1 %>
+        <%= business.address.line1 %><br />
         <%= business.address.city %>
         <%= business.address.state %>
         <%= business.address.zip %><br />
         <%= link_to "Website", business.website %>
           <% if business.check_time %>
-            <h4 class="green-text"> Happy Hour is ON until <%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p") %></h4>
+            <h5 class="green-text"> Happy Hour is ON until <%= business.end_time.strftime("%-I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p") %></h5>
           <% else %>
-            <h4 class="red-text"> You'll have to wait until <%= business.start_time.strftime("%I") + ":" + business.start_time.strftime("%M") + business.start_time.strftime("%p") + "--"%><%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p")%>
+            <h5 class="red-text"> You'll have to wait until <%= business.start_time.strftime("%-I") + ":" + business.start_time.strftime("%M") + business.start_time.strftime("%p") + "--"%><%= business.end_time.strftime("%I") + ":" + business.end_time.strftime("%M") + business.end_time.strftime("%p")%></h5>
           <% end %>
-            </h4>
-            <h5 class="bold-text">Specials available: </h5> <%= business.specials.map {|special| special.category }.uniq.join(',') %>
+            <h4 class="bold-text">Specials available: </h4> <%= business.specials.map {|special| special.category }.uniq.join(',') %>
       </div>
     <% end %>
   </div>
 </div>
 
 <script>
- $(function() {
      $("select[name='category']").change(function() {
          $("form#filter_by_special_category_form").submit();
      })
- });
+
+     $("select[name='city']").change(function() {
+         $("form#filter_by_city_form").submit();
+     })
 </script>

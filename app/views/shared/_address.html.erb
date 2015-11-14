@@ -10,7 +10,7 @@
  
 <p>
   <%= ff.label :city %><br />
-  <%= ff.text_field :city %>
+  <%= ff.select :city, options_for_select(Address::VALID_CITIES) %>
 </p>
  
 <p>

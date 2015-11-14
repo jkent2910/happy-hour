@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="heading-center"> <%= @business.name %> </h1> 
   <% if @business.website? %>
-    <h5 class="heading-center"><%= link_to "View Website", @business.website, class: "btn btn-default", target: "_blank" %></h5>
+    <h5 class="heading-center"><%= link_to "View Website", @business.website, class: "btn btn-primary", target: "_blank" %></h5>
   <% end %>
   <h5 class="heading-center">
     <%= @business.address.line1 %>
@@ -15,20 +15,25 @@
 </div>
 <div class="container">
   <% if @business.check_time %>
-    <h4 class="green-text"> Happy Hour is ON until <%= @business.end_time.strftime("%I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p") %></h4>
+    <h4 class="green-text"> Happy Hour is ON until <%= @business.end_time.strftime("%-I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p") %></h4>
   <% else %>
-    <h4 class="red-text"> You'll have to wait until <%= @business.start_time.strftime("%I") + ":" + @business.start_time.strftime("%M") + @business.start_time.strftime("%p") + "--"%><%= @business.end_time.strftime("%I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p")%>
+    <h4 class="red-text"> You'll have to wait until <%= @business.start_time.strftime("%-I") + ":" + @business.start_time.strftime("%M") + @business.start_time.strftime("%p") + "--"%><%= @business.end_time.strftime("%I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p")%>
     </h4>
   <% end %>
 </div>
 <div class="container"> 
-  <h4><%= @business.name%>'s Happy Hour Specials </h4>
-    <% @specials.each do |special| %><br />
-      Item: <%= special.name %>  <br />
-      Price: $<%= special.price %> <br />
-      Category: <%= special.category %> <br />
-      Day Offered: <%= special.day_of_the_week %>
-    <% end %> <br />
+  <h4><%= @business.name%> Happy Hour Specials </h4>
+    <div class="row">
+      <% @specials.each do |special| %>
+        <div class="col-md-4 small-screen-margin">
+          <strong>Item:</strong> <%= special.name %>  <br />
+          <strong>Price:</strong> <%= number_to_currency(special.price) %> <br />
+          <strong>Category:</strong> <%= special.category %> <br />
+          <strong>Day Offered:</strong> <%= special.day_of_the_week %>
+        </div>
+      <% end %> <br />
+    </div>
+  </div>
 </div>
 
 <div class="container links">
