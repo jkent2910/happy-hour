@@ -12,13 +12,18 @@ class Business < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  scope :specials, -> (specials) { where specials: {category: category}}
+  def self.by_category_and_city(city = nil, category = nil)
+    return Business.joins(:address).where(addresses: {city: city}) && Business.joins(specials).where(specials: {category: category}).distinct if category && city  
+    return Business.joins(:specials).where(specials: {category: category}).distinct if category   
+    return Business.joins(:address).where(addresses: {city: city}) if city 
+    all 
+  end
+
 
   def check_time
     start_time_hour = start_time.hour
     end_time_hour = end_time.hour 
     t = Time.now.hour 
-
     if t >= start_time_hour && t <= end_time_hour 
       return true 
     else

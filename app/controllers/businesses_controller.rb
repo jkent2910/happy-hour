@@ -4,11 +4,13 @@ class BusinessesController < ApplicationController
 
   def index
 
+    @city = city_params[:city]
     @category = category_params[:category]
-    if @category.blank? || @category == '*'
+
+    if @category.blank? && @city.blank?
       @businesses = Business.all 
-    else
-      @businesses = Business.joins(:specials).where(specials: {category: @category}).distinct
+    else 
+      @businesses = Business.by_category_and_city(city_params[:city], category_params[:category])
     end
 
     if sort_order == "open"
@@ -81,5 +83,7 @@ class BusinessesController < ApplicationController
       params.permit(:category)
     end
 
-
+    def city_params
+      params.permit(:city)
+    end
 end
