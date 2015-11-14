@@ -12,6 +12,7 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
+  travel_to Time.new(2015, 11, 24, 04, 00, 00)
   click_link(link)
 end
 
