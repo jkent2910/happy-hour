@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem "paperclip", "~> 4.3"
 gem 'pg'
 gem 'rails', '4.2.1'
+gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
@@ -32,3 +33,4 @@ group :test do
   gem 'shoulda-matchers', '~>3.0'
 end
 
+ruby "2.2.0"
