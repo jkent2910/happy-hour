@@ -17,7 +17,7 @@
   <% if @business.check_time %>
     <h4 class="green-text"> Happy Hour is ON until <%= @business.end_time.strftime("%-I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p") %></h4>
   <% else %>
-    <h4 class="red-text"> You'll have to wait until <%= @business.start_time.strftime("%-I") + ":" + @business.start_time.strftime("%M") + @business.start_time.strftime("%p") + "--"%><%= @business.end_time.strftime("%I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p")%>
+    <h4 class="red-text"> You'll have to wait until <%= @business.start_time.strftime("%-I") + ":" + @business.start_time.strftime("%M") + @business.start_time.strftime("%p") + "--"%><%= @business.end_time.strftime("%-I") + ":" + @business.end_time.strftime("%M") + @business.end_time.strftime("%p")%>
     </h4>
   <% end %>
 </div>
@@ -29,7 +29,9 @@
           <strong>Item:</strong> <%= special.name %>  <br />
           <strong>Price:</strong> <%= number_to_currency(special.price) %> <br />
           <strong>Category:</strong> <%= special.category %> <br />
-          <strong>Day Offered:</strong> <%= special.day_of_the_week %>
+          <strong>Day Offered:</strong> <% special.day_of_the_week.each do |day| %>
+            <%= day %>
+            <% end %>
         </div>
       <% end %> <br />
     </div>
