@@ -33,4 +33,4 @@ group :test do
   gem 'shoulda-matchers', '~>3.0'
 end
 
-ruby "2.2.0"
+ruby "2.2.1"
