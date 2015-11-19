@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk', '~> 2'
 gem 'cocoon'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise', '~> 3.4.1'
