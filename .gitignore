@@ -18,3 +18,4 @@
 
 # Ignore environment variables file
 /config/local_env.yml
+/config/initializers/env.rb
