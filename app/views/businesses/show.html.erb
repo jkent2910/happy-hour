@@ -40,5 +40,6 @@
 
 <div class="container links">
     <%= link_to "Edit Business", edit_business_path(@business), class: "btn btn-default" %>
+    <%= link_to "Back", root_path, class: "btn btn-primary" %>
     <h5>Business last updated on: <%=@business.updated_at.strftime('%x') %></h5>
 </div>
