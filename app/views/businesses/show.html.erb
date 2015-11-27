@@ -29,9 +29,7 @@
           <strong>Item:</strong> <%= special.name %>  <br />
           <strong>Price:</strong> <%= number_to_currency(special.price) %> <br />
           <strong>Category:</strong> <%= special.category %> <br />
-          <strong>Day(s) Offered:</strong> <% special.day_of_the_week.each do |day| %>
-            <%= day %> <%= "," unless day == day.last %>
-            <% end %>
+          <strong>Day(s) Offered:</strong> <%= special.day_of_the_week.join(", ") %>
         </div>
       <% end %> <br />
     </div>
