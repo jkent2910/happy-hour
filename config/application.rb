@@ -29,9 +29,9 @@ module HappyHour
     config.paperclip_defaults = {
       :storage => :s3,
       :s3_credentials => {
-        :bucket => env['AWS_BUCKET'],
-        :access_key_id => env['AWS_ACCESS_KEY_ID'],
-        :secret_access_key => env['AWS_SECRET_ACCESS_KEY']
+        :bucket => ENV['AWS_BUCKET'],
+        :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+        :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
       }
     }
   end
