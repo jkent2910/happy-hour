@@ -23,9 +23,6 @@ module HappyHour
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    env_file = File.join(Rails.root, 'config', 'local_env.yml')
-    env = YAML::load_file(env_file)[Rails.env]
-
     config.paperclip_defaults = {
       :storage => :s3,
       :s3_credentials => {
